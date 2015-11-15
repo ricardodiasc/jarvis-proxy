@@ -1,12 +1,12 @@
 {
   "name": "jarvis-prox",
-  "version": "1.0.0",
+  "version": "1.0.0-dev",
   "description": "",
   "main": "jarvis_prox.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "author": "",
+  "author": "RicardoDiasC",
   "license": "ISC",
   "devDependencies": {
     "colors": "^1.1.2",

@@ -15,7 +15,9 @@ var server = http.createServer(function(req, resp){
 
 
     var options = {
+            //Your proxy server
             host: '127.0.0.1',
+            //Your proxy port
             port: 3128,
 
             path  : destUrl.href,
@@ -31,7 +33,7 @@ var server = http.createServer(function(req, resp){
     // console.log(JSON.stringify(options));
 
     var destino = http.request(options, function(r){
-            console.log("Resposta !!!!!!!!!!!!! ");
+            console.log("Response");
             resp.writeHead(r.headers);
 
              r.on('data', function(chunk){
@@ -49,34 +51,7 @@ var server = http.createServer(function(req, resp){
 
     });
 
-
-    // destino.on('error', function(e){
-    //         console.log("ERROR---->"+e);
-    // });
-    //
-    // destino.on('end', function(){
-    //
-    // });
-
-    //destino.pipe(req);
     destino.end();
-
-    // resp.writeHead(200, {
-    //     "Content-Type" : "text/html"
-    // });
-    //
-    // resp.write("<html> <body>Hello Mother Fucker ");
-    //
-    // resp.write("<p>host: "+host+"</p>");
-    // resp.write("<p>method: "+method+"</p>");
-    // resp.write(" <p>headers: "+JSON.stringify(headers)+"</p>");
-    //
-    //
-    // resp.write("</body> </html>\n");
-
-
-
-
 });
 
 server.listen(3131);
