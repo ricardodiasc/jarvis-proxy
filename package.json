@@ -1,0 +1,17 @@
+{
+  "name": "jarvis-prox",
+  "version": "1.0.0",
+  "description": "",
+  "main": "jarvis_prox.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "colors": "^1.1.2",
+    "global-tunnel": "^1.2.0",
+    "http-proxy": "^1.12.0",
+    "ssl-root-cas": "^1.1.10"
+  }
+}
