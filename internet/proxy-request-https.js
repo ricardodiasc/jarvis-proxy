@@ -6,7 +6,7 @@ var Tls = require('tls');
 // sslrootcas.inject().addFile("/home/ricardo/dias/node/jarvis-prox/keys/proxyserver.rede.tst.cer")
 // .addFile("/etc/ssl/certs/ca-certificates.crt");
 
-// process.env.NODE_TLS_REJECT_UNAUTHORIZED = "0";
+process.env.NODE_TLS_REJECT_UNAUTHORIZED = "0";
 
 var req = Http.request({
     host: '127.0.0.1',
