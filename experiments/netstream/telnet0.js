@@ -6,13 +6,14 @@ var server = net.createServer(function(conn){
         console.log('Recebimento de dados: '+data);
     });
 
+
+    conn.write('ola\n');
+    conn.pipe(conn);
+
     conn.on('end', function(){
         console.log("Cliente DESCONECTADO.");
     });
 
-    conn.write('ola\n');
-
-    // conn.pipe(conn);
 });
 
 //server.listen('/tmp/echo.sock', function() { //'listening' listener
