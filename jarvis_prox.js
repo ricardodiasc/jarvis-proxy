@@ -21,8 +21,8 @@ var server = http.createServer(function(req, resp){
             port: 3128,
 
             path  : destUrl.href,
-            // method: destMethod,
-            method: 'CONNECT',
+            method: destMethod,
+            // method: 'CONNECT',
             headers: destHeaders
     };
 
@@ -31,8 +31,8 @@ var server = http.createServer(function(req, resp){
     console.log("\tMethod: "+ destMethod);
     console.log("\tUrl: "+ destUrl.href);
     // console.log(JSON.stringify(options));
-
     var destino = http.request(options, function(r){
+    // var destino = http.request(options, function(r){
             console.log("Response");
             resp.writeHead(r.headers);
 
