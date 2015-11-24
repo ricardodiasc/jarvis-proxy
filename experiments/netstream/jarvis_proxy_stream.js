@@ -4,38 +4,46 @@ var server = net.createServer(function(conn){
     console.log("Cliente conectado.");
 
     var options = {
-        host : 'google.com',
-        port: '443'
+        host: '127.0.0.1',
+        port: 3128,
+        method: 'CONNECT',
+        path: 'https://google.com:443'
     };
 
     var dest = net.connect(options,function(){
         console.log('conectou ' + dest.toString());
 
         dest.write('GET / HTTP/1.1\r\nHost: google.com\r\n\r\n');
-        //Devolve o que recebeu da internet para o cliente
-        dest.on('data', function(dataResponse){
-            console.log('\tGoogle Respondeu: '+dataResponse.toString());
-            conn.pipe(dataResponse);
-        });
-
-        dest.on('end', function(){
-            conn.end();
-        });
-        //dest.pipe(conn);
-
-        dest.on('error', function(err){
-            console.log("Erro no DESTINO"+err);
-        });
 
     });
 
+    //Devolve o que recebeu da internet para o cliente
+    dest.on('data', function(dataResponse){
+        console.log('\tGoogle Respondeu: '+dataResponse.toString());
+        conn.pipe(dataResponse);
+    });
+
+    dest.on('connect',function(){
+        console.log("DEST connect");
+    });
+
+    dest.on('end', function(){
+        conn.end();
+    });
+    //dest.pipe(conn);
+
+    dest.on('error', function(err){
+        console.log("Erro no DESTINO"+err);
+        conn.end();
+    });
 
 
     //Envia o que recebe para o destino
     conn.on('data', function(data){
         console.log('Conn recebe dados');
         //conn.write(data);
-        // console.log('Recebimento de dados: '+data);
+
+        console.log('Recebimento de dados: '+data);
     });
     conn.on('error', function(e){
         console.log("Error no Connection" +e);

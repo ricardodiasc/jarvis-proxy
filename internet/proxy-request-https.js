@@ -16,10 +16,12 @@ var req = Http.request({
 });
 
 req.on('connect', function (res, socket, head) {
-    var cts = Tls.connect({
+    var options = {
         host: 'google.com',
         socket: socket
-    }, function () {
+    };
+
+    var cts = Tls.connect(options, function () {
         cts.write('GET / HTTP/1.1\r\nHost: google.com\r\n\r\n');
     });
 
